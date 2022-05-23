@@ -2,14 +2,14 @@ import UIKit
 
 class ProductDetailViewController: UIViewController {
     // MARK: - Property
-    @IBOutlet weak var imageCollectionView: UICollectionView!
-    @IBOutlet weak var currentPageLabel: UILabel!
-    @IBOutlet weak var totalPageLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var stockLabel: UILabel!
-    @IBOutlet weak var previousPriceLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var imageCollectionView: UICollectionView!
+    @IBOutlet private weak var currentPageLabel: UILabel!
+    @IBOutlet private weak var totalPageLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var stockLabel: UILabel!
+    @IBOutlet private weak var previousPriceLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var descriptionTextView: UITextView!
     
     private let apiManager = APIManager.shared
     private var imageDataSource: UICollectionViewDiffableDataSource<Section, Image>?
@@ -24,7 +24,7 @@ class ProductDetailViewController: UIViewController {
         getProductSecret()
         getProductDetail()
         setupImageCollectionView()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDetailView), name: NSNotification.Name("UpdateView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDetailView), name: .updateView, object: nil)
     }
     
     // MARK: - Setup View Method
@@ -32,7 +32,7 @@ class ProductDetailViewController: UIViewController {
         getProductDetail()
     }
     
-    @IBAction func tapEditDeleteButton(_ sender: Any) {
+    @IBAction private func tapEditDeleteButton(_ sender: Any) {
         let alert = createAlert()
         present(alert, animated: true, completion: nil)
     }
@@ -58,7 +58,7 @@ class ProductDetailViewController: UIViewController {
             case .success(let product):
                 DispatchQueue.main.async {
                     self.productDetail = product
-                    self.appendProductImages(with: product.images)
+//                    self.appendProductImages(with: product.images)
                     self.setup(with: product)
                 }
             case .failure(let error):
@@ -74,7 +74,7 @@ class ProductDetailViewController: UIViewController {
             case .success(let products):
                 DispatchQueue.main.async {
                     print("\(products.name) 삭제 완료")
-                    NotificationCenter.default.post(name: NSNotification.Name("UpdateView"), object: nil)
+                    NotificationCenter.default.post(name: .updateView, object: nil)
                     self.navigationController?.popViewController(animated: false)
                 }
             case .failure(let error):
@@ -84,8 +84,7 @@ class ProductDetailViewController: UIViewController {
     }
     
     // MARK: - Setup ProductDetailView Method
-    private func appendProductImages(with images: [Image]?) {
-        guard let images = images else { return }
+    private func appendProductImages(with images: [Image]) {
         images.forEach { image in
             convertToUIImage(with: image)
         }
@@ -94,7 +93,8 @@ class ProductDetailViewController: UIViewController {
     private func convertToUIImage(with productImage: Image) {
         guard let imageURL = URL(string: productImage.url) else { return }
         URLSession.shared.dataTask(with: imageURL) { data, _, _ in
-            guard let image = UIImage(data: data!) else { return }
+            guard let data = data,
+                let image = UIImage(data: data) else { return }
             self.productImages.append(image)
         }.resume()
     }
@@ -106,6 +106,7 @@ class ProductDetailViewController: UIViewController {
         setupStockLabel(with: product)
         setupPriceLabel(with: product)
         setupDescriptionTextView(with: product)
+        appendProductImages(with: productImages)
         populate(with: productImages)
     }
     

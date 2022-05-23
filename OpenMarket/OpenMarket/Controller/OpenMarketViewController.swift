@@ -1,12 +1,16 @@
 import UIKit
 
+extension Notification.Name {
+    static let updateView = Notification.Name("UpdateView")
+}
+
 enum Section {
     case main
 }
 
 class OpenMarketViewController: UIViewController {
     // MARK: - Property
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     private let apiManager = APIManager.shared
     private let listCollectionView = UICollectionView(frame: .zero, collectionViewLayout: OpenMarketViewLayout.list)
     private let gridCollectionView = UICollectionView(frame: .zero, collectionViewLayout: OpenMarketViewLayout.grid)
@@ -27,7 +31,7 @@ class OpenMarketViewController: UIViewController {
         setupListCollectionView()
         setupGridCollectionView()
         getProducts()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateMainView), name: NSNotification.Name("UpdateView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMainView), name: .updateView, object: nil)
     }
     
     // MARK: - Setup View Method
@@ -35,7 +39,7 @@ class OpenMarketViewController: UIViewController {
         getProducts()
     }
     
-    @IBAction func segementChanged(_ sender: UISegmentedControl) {
+    @IBAction private func segementChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             view = listCollectionView
@@ -111,8 +115,7 @@ extension OpenMarketViewController: UICollectionViewDelegate {
         guard let destination = segue.destination as? ProductDetailViewController else { return }
         if let senderCell = sender as? ProductListCell {
             destination.productID = senderCell.productID
-        }
-        if let senderCell = sender as? ProductGridCell {
+        } else if let senderCell = sender as? ProductGridCell {
             destination.productID = senderCell.productID
         }
     }

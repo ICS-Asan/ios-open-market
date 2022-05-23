@@ -137,7 +137,7 @@ class AddProductViewController: UIViewController {
         apiManager.editProduct(id: id, product: information) { result in
             switch result {
             case .success(_):
-                NotificationCenter.default.post(name: NSNotification.Name("UpdateView"), object: nil)
+                NotificationCenter.default.post(name: .updateView, object: nil)
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -152,7 +152,7 @@ class AddProductViewController: UIViewController {
             switch result {
             case .success(let data):
                 print("\(data.name) post 성공")
-                NotificationCenter.default.post(name: NSNotification.Name("UpdateView"), object: nil)
+                NotificationCenter.default.post(name: .updateView, object: nil)
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
                 }
