@@ -19,7 +19,7 @@ class APIManagerTests: XCTestCase {
         }
     }
 
-    func test_상품목록의_상품갯수가_20개인지_확인() {
+    func test_상품목록의_상품갯수가_Mock데이터와_같은지_확인() {
         let response = JSONParser.decodeData(of: MockData().productListData, type: ProductList.self)
         sutAPIManager.checkProductList(pageNumber: 1, itemsPerPage: 20) { result in
             switch result {
@@ -32,7 +32,7 @@ class APIManagerTests: XCTestCase {
         }
     }
     
-    func test_첫번째_상품의_이름이_pizza인지_확인() {
+    func test_첫번째_상품의_이름이_Mock데이터와_같은지_확인() {
         let response = JSONParser.decodeData(of: MockData().productListData, type: ProductList.self)
         
         sutAPIManager.checkProductList(pageNumber: 1, itemsPerPage: 20) { result in

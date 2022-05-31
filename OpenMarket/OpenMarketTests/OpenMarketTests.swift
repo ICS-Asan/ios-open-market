@@ -17,12 +17,12 @@ class OpenMarketTests: XCTestCase {
         XCTAssertEqual(result, 20)
     }
     
-    func test_디코딩된_JSON데이터의_pages의_요소가_5개여야_한다() {
+    func test_디코딩된_JSON데이터의_pages의_요소가_10개여야_한다() {
         let data = convertToNSDataAsset(from: "products")!
         let decodedData = JSONParser.decodeData(of: data, type: ProductList.self)
         let result = decodedData?.pages.count
         
-        XCTAssertEqual(result, 19)
+        XCTAssertEqual(result, 10)
     }
     
     func test_디코딩된_JSON데이터의_pages의_두번째요소가_TestProduct여야_한다() {

@@ -21,6 +21,13 @@
 		473CF1372783E07700B8DA1F /* OpenMarketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CF1362783E07700B8DA1F /* OpenMarketTests.swift */; };
 		473CF13D2783E08B00B8DA1F /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F81732782E8AC006B4734 /* ProductList.swift */; };
 		473CF13E2783E08D00B8DA1F /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470F81752782F51A006B4734 /* JSONParser.swift */; };
+		4765E45B2846C8BB00AD61C7 /* NewProductInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1043612797BC7F00745D64 /* NewProductInformation.swift */; };
+		4765E45C2846C8BD00AD61C7 /* NewProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708E5032797C5F5002BBCED /* NewProductImage.swift */; };
+		4765E45D2846C8C000AD61C7 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1043632797C03900745D64 /* Currency.swift */; };
+		4765E45E2846C8D500AD61C7 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47321087278FF6DD0052EEB1 /* String+extension.swift */; };
+		4765E45F2846C8D800AD61C7 /* Int+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47321089279068340052EEB1 /* Int+extension.swift */; };
+		4765E4602846C8DB00AD61C7 /* Double+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10433F27955B0E00745D64 /* Double+extension.swift */; };
+		4765E4612846C8DD00AD61C7 /* Data+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708E5082797CE05002BBCED /* Data+extension.swift */; };
 		47F2A2CB27A13E800079DC9A /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A2CA27A13E800079DC9A /* ProductDetailViewController.swift */; };
 		47FF35712789CAB80098FB0C /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FF35702789CAB80098FB0C /* URLSessionProtocol.swift */; };
 		47FF35722789CABC0098FB0C /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FF35702789CAB80098FB0C /* URLSessionProtocol.swift */; };
@@ -436,17 +443,24 @@
 				EAB8FC1C2787DC8F0036A4E3 /* Image.swift in Sources */,
 				47FF35772789CFC30098FB0C /* MockData.swift in Sources */,
 				47FF35732789CF8D0098FB0C /* APIManager.swift in Sources */,
+				4765E45F2846C8D800AD61C7 /* Int+extension.swift in Sources */,
 				EAB8FC1B2787DC8A0036A4E3 /* ProductDetail.swift in Sources */,
 				47FF35742789CF920098FB0C /* URLManager.swift in Sources */,
 				473CF1372783E07700B8DA1F /* OpenMarketTests.swift in Sources */,
 				47FF35722789CABC0098FB0C /* URLSessionProtocol.swift in Sources */,
 				473CF13D2783E08B00B8DA1F /* ProductList.swift in Sources */,
+				4765E45D2846C8C000AD61C7 /* Currency.swift in Sources */,
 				EA1FD6632789CD2A00193735 /* MockURLSession.swift in Sources */,
 				473CF13E2783E08D00B8DA1F /* JSONParser.swift in Sources */,
 				EA1FD6642789D39D00193735 /* URLSessionError.swift in Sources */,
 				EAB8FC1D2787DC900036A4E3 /* Vendors.swift in Sources */,
+				4765E45B2846C8BB00AD61C7 /* NewProductInformation.swift in Sources */,
+				4765E45E2846C8D500AD61C7 /* String+extension.swift in Sources */,
 				EA1FD6652789D39F00193735 /* JSONError.swift in Sources */,
+				4765E45C2846C8BD00AD61C7 /* NewProductImage.swift in Sources */,
+				4765E4602846C8DB00AD61C7 /* Double+extension.swift in Sources */,
 				47FF35792789CFD50098FB0C /* MockURLSessionDataTask.swift in Sources */,
+				4765E4612846C8DD00AD61C7 /* Data+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
