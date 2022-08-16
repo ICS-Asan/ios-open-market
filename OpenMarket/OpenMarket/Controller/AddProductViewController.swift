@@ -148,12 +148,11 @@ class AddProductViewController: UIViewController {
     }
     
     private func postNewProduct(with information: NewProductInformation) {
-        apiManager.addProduct(information: information, images: newProductImages) { result in
+        apiManager.uploadDataWithImage(information: information, images: newProductImages) { result in
             switch result {
-            case .success(let data):
-                print("\(data.name) post 성공")
-                NotificationCenter.default.post(name: NSNotification.Name("UpdateView"), object: nil)
+            case .success(let status):
                 DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name("UpdateView"), object: nil)
                     self.dismiss(animated: true, completion: nil)
                 }
             case .failure(let error):
@@ -271,7 +270,7 @@ extension AddProductViewController {
               let image = imageButton.imageView?.image,
               let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         
-        let productImage = NewProductImage(image: imageData)
+        let productImage = NewProductImage(data: imageData)
         newProductImages.append(productImage)
     }
     

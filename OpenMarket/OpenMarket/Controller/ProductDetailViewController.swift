@@ -43,6 +43,7 @@ class ProductDetailViewController: UIViewController {
             switch result {
             case .success(let data):
                 self.secret = String(decoding: data, as: UTF8.self)
+                print(self.secret)
             case .failure(_):
                 DispatchQueue.main.async {
                     self.navigationItem.rightBarButtonItem = nil
