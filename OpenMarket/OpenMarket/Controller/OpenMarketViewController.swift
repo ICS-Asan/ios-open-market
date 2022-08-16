@@ -20,6 +20,7 @@ class OpenMarketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        apiManager.checkAPIHealth()
         listCollectionView.delegate = self
         gridCollectionView.delegate = self
         setupSegmentedControl()
